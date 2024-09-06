@@ -34,4 +34,7 @@ jobs:
     - name: Release
       uses: softprops/action-gh-release@v2
       with:
-        files: hello-tags.exe
+        files: |
+          windows_build.exe
+          linux_build
+          mac_build
