@@ -25,11 +25,11 @@ jobs:
       run: |
         set CGO_ENABLED=0
         set GOOS=windows& set GOARCH=amd64
-        go build -o windows_build.exe -ldflags="-w -s"
+        go build -o windows_build_${{  github.ref_name }}.exe -ldflags="-w -s"
         set GOOS=linux& set GOARCH=amd64
-        go build -o linux_build -ldflags="-w -s"
+        go build -o linux_build_${{  github.ref_name }} -ldflags="-w -s"
         set GOOS=darwin& set GOARCH=arm64
-        go build -o mac_build -ldflags="-w -s"
+        go build -o mac_build_${{  github.ref_name }} -ldflags="-w -s"
 
     - name: GitHub Tag Name example
       run: |
