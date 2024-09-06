@@ -40,6 +40,6 @@ jobs:
       uses: softprops/action-gh-release@v2
       with:
         files: |
-          windows_build.exe
-          linux_build
-          mac_build
+          windows_build_${{  github.ref_name }}.exe
+          linux_build_${{  github.ref_name }}
+          mac_build_${{  github.ref_name }}
