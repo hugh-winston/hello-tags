@@ -11,7 +11,7 @@ on:
 
 jobs:
 
-  build:
+  builds:
     runs-on: windows-latest
     steps:
     - uses: actions/checkout@v4
@@ -30,6 +30,11 @@ jobs:
         go build -o linux_build -ldflags="-w -s"
         set GOOS=darwin& set GOARCH=arm64
         go build -o mac_build -ldflags="-w -s"
+
+    - name: GitHub Tag Name example
+      run: |
+        echo "Tag name from GITHUB_REF_NAME: $GITHUB_REF_NAME"
+        echo "Tag name from github.ref_name: ${{  github.ref_name }}"
 
     - name: Release
       uses: softprops/action-gh-release@v2
