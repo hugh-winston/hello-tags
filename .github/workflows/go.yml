@@ -22,7 +22,14 @@ jobs:
         go-version: '1.22'
 
     - name: Build
-      run: go build
+      run: |
+        set CGO_ENABLED=0
+        set GOOS=windows& set GOARCH=amd64
+        go build -o windows_build.exe -ldflags="-w -s"
+        set GOOS=linux& set GOARCH=amd64
+        go build -o linux_build -ldflags="-w -s"
+        set GOOS=darwin& set GOARCH=arm64
+        go build -o mac_build -ldflags="-w -s"
 
     - name: Release
       uses: softprops/action-gh-release@v2
