@@ -43,3 +43,4 @@ jobs:
           windows_build_${{  github.ref_name }}.exe
           linux_build_${{  github.ref_name }}
           mac_build_${{  github.ref_name }}
+        generate_release_notes: true
